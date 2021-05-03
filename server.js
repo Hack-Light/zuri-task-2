@@ -11,15 +11,19 @@ axios
   .get("http://jsonplaceholder.typicode.com/posts")
   .then(function (res) {
     const { data } = res;
-    fs.writeFile(file, data, function (err) {
-      if (err) {
-        console.log(err);
+    fs.writeFile(
+      path.join(__dirname, "result", "post.txt"),
+      data,
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
       }
-    });
+    );
     console.log("File Created");
   })
   .catch(function (err) {
-    fs.writeFile(efile, err, err => {
+    fs.writeFile(path.join(__dirname, "result", "error.txt"), err, err => {
       if (err) console.log(err);
     });
   });
